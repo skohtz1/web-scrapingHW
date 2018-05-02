@@ -18,14 +18,47 @@
       <p><a class="btn btn-primary btn-lg" href="/clear" role="button">Clear Results</a></p>
     </div>
 
-    <!-- Craigslist Listings -->
-    {% for listing in listings %}
-    <div class="row" id="craiglist-listings">
-      <div class="col-md-12">
-        <h4 class="heading">{{listing.weather}} {{listing.mars_facts}} {{listing.hemisphere}}</h4>
+    <div class = "row" id = "mars-news">
+      <div class = "col-md-12">
+        <h2>Recent Mars News</h2>
+        <h4>{{listings.title_feature}}</h4>
+        <p>{{listings.summary_feature}}</p>
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class = "col-md-8">
+        <h2>Featured Image</h2>
+        <img src = "{{listings.feature_image}}" class = "img-responsive" alt = "Image">
+      </div>
+    </div>
+
+    <div class = "row" id = "mars-facts">
+      <div class = "col-md-12">
+        <h4>Facts of Mars</h4>
+        <link rel="import" href=".mars_facts.html">
+      </div>
+    </div>
+
+    <div class = "row" style = "margin-top:80px;">
+      <h2 class = "text-center">Mars Hemispheres</h2>
+    </div>
+
+    {% for hemisphere in listings.hemisphere %}
+    <div class = "col-md-6">
+      <div class = "thumbnail">
+        <img src = "{{listings.hemisphere}}" alt = "help">
       </div>
     </div>
     {% endfor %}
+
+
+
+    </div>
+
+
+
+
 
   </div>
 </body>

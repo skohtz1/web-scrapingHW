@@ -49,7 +49,9 @@ def scrape():
     df = tables[0]
     df.columns = ["Parameter", "Values"]
     mars_data_df = df.set_index(["Parameter"])
-    mars_data_html = mars_data_df.to_html("mars_facts.html")
+    mars_data_df.to_html("mars_facts.html")
+    mars_data_html = mars_data_df.to_html()
+    mars_data_html = mars_data_html.replace("\n", "")
     
     
     ##hemisphere
@@ -85,7 +87,8 @@ def scrape():
         hemisphere_image_urls.append(dicts1)
         browser.back()
         
-    mars_data_dict = [{"weather":mars_weather,"hemisphere":hemisphere_image_urls,"feature_image": feature_image_url,"title_feature":title_first,"summary_feature":summaries_first}]
+    
+    mars_data_dict = [{"weather":mars_weather,"mars_facts":mars_data_html,"hemisphere":hemisphere_image_urls,"feature_image": feature_image_url,"title_feature":title_first,"summary_feature":summaries_first}]
     
     return mars_data_dict
     
