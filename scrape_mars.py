@@ -88,7 +88,7 @@ def scrape():
         browser.back()
         
     
-    mars_data_dict = [{"weather":mars_weather,"mars_facts":mars_data_html,"hemisphere":hemisphere_image_urls,"feature_image": feature_image_url,"title_feature":title_first,"summary_feature":summaries_first}]
+    mars_data_dict = {"weather":mars_weather,"mars_facts":mars_data_html,"hemisphere":hemisphere_image_urls,"feature_image": feature_image_url,"title_feature":title_first,"summary_feature":summaries_first}
     
     return mars_data_dict
     

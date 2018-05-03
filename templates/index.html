@@ -17,42 +17,103 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars!</a></p>
       <p><a class="btn btn-primary btn-lg" href="/clear" role="button">Clear Results</a></p>
     </div>
-
+    {% for data in listings %}
     <div class = "row" id = "mars-news">
       <div class = "col-md-12">
         <h2>Recent Mars News</h2>
-        <h4>{{listings.title_feature}}</h4>
-        <p>{{listings.summary_feature}}</p>
+        <h4>{{data.title_feature}}</h4>
+        <p>{{data.summary_feature}}</p>
       </div>
     </div>
+
 
     <div class = "row">
       <div class = "col-md-8">
         <h2>Featured Image</h2>
-        <img src = "{{listings.feature_image}}" class = "img-responsive" alt = "Image">
+        <img src = "{{data.feature_image}}" class = "img-responsive" alt = "Image">
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class = "col-md-5">
+        <h3>Current Mars Weather</h3>
+        {{data.weather}}
+        <hr>
       </div>
     </div>
 
     <div class = "row" id = "mars-facts">
       <div class = "col-md-12">
         <h4>Facts of Mars</h4>
-        <link rel="import" href=".mars_facts.html">
+        <table border="1" class="dataframe">
+            <thead>
+              <tr style="text-align: right;">
+                <th></th>
+                <th>Values</th>
+              </tr>
+              <tr>
+                <th>Parameter</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Equatorial Diameter:</th>
+                <td>6,792 km</td>
+              </tr>
+              <tr>
+                <th>Polar Diameter:</th>
+                <td>6,752 km</td>
+              </tr>
+              <tr>
+                <th>Mass:</th>
+                <td>6.42 x 10^23 kg (10.7% Earth)</td>
+              </tr>
+              <tr>
+                <th>Moons:</th>
+                <td>2 (Phobos &amp; Deimos)</td>
+              </tr>
+              <tr>
+                <th>Orbit Distance:</th>
+                <td>227,943,824 km (1.52 AU)</td>
+              </tr>
+              <tr>
+                <th>Orbit Period:</th>
+                <td>687 days (1.9 years)</td>
+              </tr>
+              <tr>
+                <th>Surface Temperature:</th>
+                <td>-153 to 20 �C</td>
+              </tr>
+              <tr>
+                <th>First Record:</th>
+                <td>2nd millennium BC</td>
+              </tr>
+              <tr>
+                <th>Recorded By:</th>
+                <td>Egyptian astronomers</td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
+
+
 
     <div class = "row" style = "margin-top:80px;">
       <h2 class = "text-center">Mars Hemispheres</h2>
     </div>
 
-    {% for hemisphere in listings.hemisphere %}
+    {% for hemisphere in data.hemisphere %}
     <div class = "col-md-6">
       <div class = "thumbnail">
-        <img src = "{{listings.hemisphere}}" alt = "help">
+        <img src = "{{hemisphere['img_url']}}" alt = "help">
+        <figcaption class="figure-caption">{{hemisphere["title"]}}.</figcaption>
       </div>
     </div>
     {% endfor %}
 
-
+    {% endfor %}
 
     </div>
 

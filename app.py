@@ -15,16 +15,17 @@ def index():
 
 @app.route("/clear")
 def clear_listings():
-    mongo.db.listings_mars.drop()
+   # mongo.db.listings_mars.drop()
     return redirect("http://127.0.0.1:5000/", code=302)
 
 
 @app.route("/scrape")
 def scrape():
     listings = mongo.db.listings_mars
-    listings_data = scrape_mars.scrape()
-    for listing in listings_data:
-        listings.update({'weather':listing['weather'], 'hemisphere':listing['hemisphere'],'feature_image':listing['feature_image'],'title_feature':listing['title_feature']}, listing, upsert=True)
+    mars_data_dict = scrape_mars.scrape()
+  #  for listing in mars_data_dict:
+   #     listings.update({'weather':listing['weather'], 'hemisphere':listing['hemisphere'],'feature_image':listing['feature_image'],'title_feature':listing['title_feature']}, listing, upsert=True)
+    listings.insert_one(mars_data_dict)
     return redirect("http://127.0.0.1:5000/", code=302)
 
 
