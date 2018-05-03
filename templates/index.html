@@ -104,14 +104,14 @@
       <h2 class = "text-center">Mars Hemispheres</h2>
     </div>
 
-    {% for hemisphere in data.hemisphere %}
-    <div class = "col-md-6">
-      <div class = "thumbnail">
-        <img src = "{{hemisphere['img_url']}}" alt = "help">
-        <figcaption class="figure-caption">{{hemisphere["title"]}}.</figcaption>
-      </div>
-    </div>
-    {% endfor %}
+      {% for hemisphere in data.hemisphere %}
+        <div class = "col-md-6">
+          <div class = "thumbnail">
+            <img src = "{{hemisphere['img_url']}}" alt = "help">
+            <div class="caption"> "{{hemisphere["title"]}}"</div>
+          </div>
+        </div>
+      {% endfor %}
 
     {% endfor %}
 

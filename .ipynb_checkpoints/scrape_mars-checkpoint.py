@@ -74,7 +74,7 @@ def scrape():
     
     for i in range(len(links)):
         dicts1 = {}
-        dicts1["title"] = soup3.find_all("h3")[i].text
+        dicts1["title"] = soup4.find_all("h3")[i].text
         browser.click_link_by_partial_text(soup4.find_all("h3")[i].text)
         time.sleep(5)
         n_html = browser.html
@@ -86,6 +86,9 @@ def scrape():
                 
         hemisphere_image_urls.append(dicts1)
         browser.back()
+    
+    
+    print(hemisphere_image_urls)
         
     
     mars_data_dict = {"weather":mars_weather,"mars_facts":mars_data_html,"hemisphere":hemisphere_image_urls,"feature_image": feature_image_url,"title_feature":title_first,"summary_feature":summaries_first}
